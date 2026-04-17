@@ -1,5 +1,7 @@
 # WorkForce - Enterprise Workforce Management Platform
 
+![WorkForce Banner](./public/image.png)
+
 > A production-grade, enterprise-scale workforce management system built with modern web technologies, featuring world-class UI/UX, intelligent scheduling, leave management, and real-time team oversight.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
