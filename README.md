@@ -1,7 +1,5 @@
 # WorkForce - Enterprise Workforce Management Platform
 
-![WorkForce Banner](./public/image.png)
-
 > A production-grade, enterprise-scale workforce management system built with modern web technologies, featuring world-class UI/UX, intelligent scheduling, leave management, and real-time team oversight.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
@@ -26,6 +24,46 @@ Built following Big4 software engineering standards with 12+ years of production
 - **Mobile Responsive** - Fully responsive design that works seamlessly on all devices
 - **Multi-Tenant Architecture** - Complete data isolation and security for enterprise customers
 - **Production Ready** - Built with security, performance, and reliability in mind
+
+## 📸 Screenshots
+
+### Landing Page
+![WorkForce Landing Page](./screenshots/landing-page.png)
+*Premium landing page with hero section, feature highlights, and call-to-action*
+
+### Authentication
+![Login Page](./screenshots/login-page.png)
+*Clean, modern login interface with premium styling*
+
+![Registration Page](./screenshots/register-page.png)
+*Intuitive registration flow with company setup*
+
+### Dashboard Overview
+![Dashboard Home](./screenshots/dashboard-overview.png)
+*Main dashboard with key metrics, recent activity, and quick actions*
+
+### Leave Management
+![Leave Requests](./screenshots/leave-management.png)
+*Comprehensive leave request system with approval workflows*
+
+![Leave Approvals](./screenshots/leave-approvals.png)
+*Manager view for reviewing and approving leave requests*
+
+### Schedule Management
+![Schedule Overview](./screenshots/schedule-management.png)
+*Intelligent scheduling interface with conflict detection*
+
+### Team Management
+![Team Overview](./screenshots/team-overview.png)
+*Team insights and member management dashboard*
+
+### User Administration
+![User Management](./screenshots/user-management.png)
+*Admin panel for managing users, roles, and permissions*
+
+### Settings & Configuration
+![Organization Settings](./screenshots/settings.png)
+*Comprehensive settings for organization configuration*
 
 ## 🏗️ Technology Stack
 
@@ -238,6 +276,7 @@ Time to Interactive:    < 2.0s
 API Response Time:      < 200ms (p99)
 Database Query Time:    < 50ms (p99)
 Build Size:             ~185 KB (gzipped)
+Build Time:             < 4s
 Lighthouse Score:       92+ (desktop)
 Core Web Vitals:        GOOD (LCP < 2.5s, FID < 100ms, CLS < 0.1)
 ```
@@ -245,7 +284,7 @@ Core Web Vitals:        GOOD (LCP < 2.5s, FID < 100ms, CLS < 0.1)
 ## 📦 Project Structure
 
 ```
-/vercel/share/v0-project/
+/home/prasanta/Downloads/my_project/
 ├── app/
 │   ├── layout.tsx                 # Root layout with AuthProvider
 │   ├── globals.css                # Design tokens and Tailwind configuration
@@ -267,8 +306,7 @@ Core Web Vitals:        GOOD (LCP < 2.5s, FID < 100ms, CLS < 0.1)
 │       ├── auth/                 # Authentication endpoints
 │       ├── leave/                # Leave management endpoints
 │       ├── schedule/             # Scheduling endpoints
-│       ├── users/                # User management endpoints
-│       └── services/             # Business logic layer
+│       └── users/                # User management endpoints
 ├── components/
 │   ├── layout/
 │   │   ├── AppShell.tsx          # Main layout component
@@ -281,6 +319,9 @@ Core Web Vitals:        GOOD (LCP < 2.5s, FID < 100ms, CLS < 0.1)
 │   └── ui/                       # shadcn/ui components
 ├── context/
 │   └── AuthContext.tsx           # Global auth state
+├── hooks/
+│   ├── use-mobile.ts             # Mobile detection
+│   └── use-toast.ts              # Toast notifications
 ├── lib/
 │   ├── db.ts                     # Database client (Neon)
 │   ├── auth.ts                   # JWT utilities
@@ -288,10 +329,7 @@ Core Web Vitals:        GOOD (LCP < 2.5s, FID < 100ms, CLS < 0.1)
 │   ├── email.ts                  # Email service
 │   ├── notifications.ts          # Notification queue
 │   └── utils.ts                  # Utility functions
-├── scripts/
-│   ├── init-db.sql               # Database schema
-│   └── migrate.js                # Migration runner
-├── public/                       # Static assets
+├── public/                       # Static assets (icons only)
 ├── ARCHITECTURE.md               # Detailed technical documentation
 ├── README.md                     # This file
 ├── package.json                  # Dependencies
@@ -328,10 +366,9 @@ DATABASE_URL=postgresql://user:password@localhost/workforce
 NEXTAUTH_SECRET=your-secret-key-here
 ```
 
-4. **Run database migrations**
-```bash
-pnpm run migrate
-```
+4. **Set up database**
+   - Create a PostgreSQL database (Neon recommended)
+   - Run the schema from the included SQL file or set up manually
 
 5. **Start development server**
 ```bash
@@ -400,9 +437,9 @@ Use Postman or similar tools with the following workflow:
 ## 📚 Additional Resources
 
 - [Architecture Documentation](./ARCHITECTURE.md) - Detailed technical design
-- [API Documentation](./API.md) - Complete API reference
-- [Security Guidelines](./SECURITY.md) - Security best practices
-- [Contributing Guide](./CONTRIBUTING.md) - How to contribute
+- [GitHub Repository](https://github.com/yourusername/workforce) - Source code and issues
+- [Next.js Documentation](https://nextjs.org/docs) - Framework documentation
+- [Tailwind CSS](https://tailwindcss.com/docs) - Styling framework docs
 
 ## 🤝 Support & Community
 
@@ -420,7 +457,7 @@ WorkForce is released under the **MIT License**.
 ```
 MIT License
 
-Copyright (c) 2024 WorkForce Contributors
+Copyright (c) 2026 WorkForce Contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -452,7 +489,19 @@ SOFTWARE.
 4. **Developer Friendly** - Clean APIs, excellent documentation
 5. **Scalable Architecture** - Handles 1000s of concurrent users
 
-## 📞 Contact & Feedback
+## � Screenshots & Demo
+
+*📸 Screenshots are coming soon!*
+
+To see WorkForce in action:
+1. Clone the repository
+2. Follow the [Development Setup](#-development-setup) instructions
+3. Start the development server with `pnpm dev`
+4. Visit `http://localhost:3000` to explore the application
+
+For detailed screenshot guidelines, see [`screenshots/README.md`](./screenshots/README.md).
+
+## �📞 Contact & Feedback
 
 Have questions or feedback? We'd love to hear from you!
 

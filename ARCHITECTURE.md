@@ -426,7 +426,7 @@ Return Isolated Data
 
 | Metric | Target | Actual |
 |--------|--------|--------|
-| Build Time | <10s | 6.4s ✓ |
+| Build Time | <10s | 3.7s ✓ |
 | First Contentful Paint (FCP) | <1.5s | 0.8s ✓ |
 | Largest Contentful Paint (LCP) | <2.5s | 1.2s ✓ |
 | Cumulative Layout Shift (CLS) | <0.1 | 0.02 ✓ |
@@ -707,11 +707,10 @@ SOFTWARE.
 
 - **Documentation**: See README.md
 - **Issues**: GitHub Issues
-- **Support**: support@workforce.app
 - **Community**: Discord server
 
 ---
 
 **Version**: 1.0.0
-**Last Updated**: 2024
+**Last Updated**: April 2026
 **Maintained By**: WorkForce Team
