@@ -199,13 +199,36 @@ export async function createLeaveType(tenantId: number, name: string, daysPerYea
   }
 }
 
+const defaultLeaveTypes = [
+  { name: 'Vacation', days_per_year: 20, carry_forward: 5 },
+  { name: 'Sick Leave', days_per_year: 12, carry_forward: 0 },
+  { name: 'Personal Leave', days_per_year: 5, carry_forward: 0 },
+  { name: 'Maternity Leave', days_per_year: 90, carry_forward: 0 },
+  { name: 'Paternity Leave', days_per_year: 14, carry_forward: 0 },
+];
+
 export async function getLeaveTypes(tenantId: number) {
   try {
-    const results = await sql`
+    let results = await sql`
       SELECT id, name, days_per_year, carry_forward
       FROM leave_types
       WHERE tenant_id = ${tenantId}
     `;
+
+    if (results.length === 0) {
+      for (const leaveType of defaultLeaveTypes) {
+        await sql`
+          INSERT INTO leave_types (tenant_id, name, days_per_year, carry_forward)
+          VALUES (${tenantId}, ${leaveType.name}, ${leaveType.days_per_year}, ${leaveType.carry_forward})
+        `;
+      }
+
+      results = await sql`
+        SELECT id, name, days_per_year, carry_forward
+        FROM leave_types
+        WHERE tenant_id = ${tenantId}
+      `;
+    }
 
     return results;
   } catch (error) {

@@ -51,6 +51,26 @@ export async function registerUser(input: RegisterInput) {
       role: user.role,
     });
 
+    // Create default leave types for this tenant
+    const defaultLeaveTypes = [
+      { name: 'Vacation', daysPerYear: 20, carryForward: 5 },
+      { name: 'Sick Leave', daysPerYear: 12, carryForward: 0 },
+      { name: 'Personal Leave', daysPerYear: 5, carryForward: 0 },
+      { name: 'Maternity Leave', daysPerYear: 90, carryForward: 0 },
+      { name: 'Paternity Leave', daysPerYear: 14, carryForward: 0 },
+    ];
+
+    try {
+      for (const leaveType of defaultLeaveTypes) {
+        await sql`
+          INSERT INTO leave_types (tenant_id, name, days_per_year, carry_forward)
+          VALUES (${tenantId}, ${leaveType.name}, ${leaveType.daysPerYear}, ${leaveType.carryForward})
+        `;
+      }
+    } catch (err) {
+      console.log('Could not create default leave types:', err);
+    }
+
     return {
       user: {
         id: user.id,

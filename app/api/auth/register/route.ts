@@ -7,13 +7,6 @@ export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
   try {
-    // Run migrations on first request
-    try {
-      await runMigrations();
-    } catch (migrationError) {
-      console.log('Migrations already completed or in progress');
-    }
-
     const body = await request.json();
 
     // Validate input

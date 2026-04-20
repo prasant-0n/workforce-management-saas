@@ -18,13 +18,14 @@ async function getAuthenticatedUser(request: NextRequest) {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { userId: string } }
+  { params }: { params: Promise<{ userId: string }> }
 ) {
   try {
     const user = await getAuthenticatedUser(request);
-    const userId = parseInt(params.userId);
+    const { userId } = await params;
+    const id = parseInt(userId);
 
-    const result = await getUserById(userId, user.tenantId);
+    const result = await getUserById(id, user.tenantId);
 
     return NextResponse.json(result, { status: 200 });
   } catch (error) {
@@ -41,7 +42,7 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { userId: string } }
+  { params }: { params: Promise<{ userId: string }> }
 ) {
   try {
     const user = await getAuthenticatedUser(request);
@@ -51,14 +52,15 @@ export async function PATCH(
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    const userId = parseInt(params.userId);
+    const { userId } = await params;
+    const id = parseInt(userId);
     const body = await request.json();
 
     let result;
     if (body.role) {
-      result = await updateUserRole(user.tenantId, userId, body.role);
+      result = await updateUserRole(user.tenantId, id, body.role);
     } else if (body.status) {
-      result = await updateUserStatus(user.tenantId, userId, body.status);
+      result = await updateUserStatus(user.tenantId, id, body.status);
     } else {
       return NextResponse.json({ error: 'No valid update fields provided' }, { status: 400 });
     }
@@ -78,7 +80,7 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { userId: string } }
+  { params }: { params: Promise<{ userId: string }> }
 ) {
   try {
     const user = await getAuthenticatedUser(request);
@@ -88,14 +90,15 @@ export async function DELETE(
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    const userId = parseInt(params.userId);
+    const { userId } = await params;
+    const id = parseInt(userId);
 
     // Prevent self-deletion
-    if (userId === user.userId) {
+    if (id === user.userId) {
       return NextResponse.json({ error: 'Cannot delete your own account' }, { status: 400 });
     }
 
-    const result = await deleteUser(user.tenantId, userId);
+    const result = await deleteUser(user.tenantId, id);
 
     return NextResponse.json(result, { status: 200 });
   } catch (error) {

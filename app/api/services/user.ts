@@ -69,7 +69,7 @@ export async function getUsers(tenantId: number, filters?: { role?: string; depa
     }
 
     const users = await query;
-    return users.map(u => ({
+    return users.map((u: any) => ({
       id: u.id,
       email: u.email,
       firstName: u.first_name,
@@ -120,7 +120,7 @@ export async function getUsersByRole(tenantId: number, role: string) {
       WHERE tenant_id = ${tenantId} AND role = ${role}
     `;
 
-    return users.map(u => ({
+    return users.map((u: any) => ({
       id: u.id,
       email: u.email,
       firstName: u.first_name,
