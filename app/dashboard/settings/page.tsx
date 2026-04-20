@@ -25,10 +25,6 @@ export default function SettingsPage() {
     carryForward: 0,
   });
 
-  useEffect(() => {
-    fetchLeaveTypes();
-  }, []);
-
   const fetchLeaveTypes = async () => {
     try {
       setIsLoading(true);
@@ -46,6 +42,12 @@ export default function SettingsPage() {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!accessToken) return;
+
+    fetchLeaveTypes();
+  }, [accessToken]);
 
   const handleCreateLeaveType = async (e: React.FormEvent) => {
     e.preventDefault();

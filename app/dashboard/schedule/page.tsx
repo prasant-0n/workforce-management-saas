@@ -32,10 +32,6 @@ export default function SchedulePage() {
     shiftType: 'FULL_DAY',
   });
 
-  useEffect(() => {
-    fetchSchedules();
-  }, []);
-
   const fetchSchedules = async () => {
     try {
       setIsLoading(true);
@@ -56,6 +52,12 @@ export default function SchedulePage() {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!accessToken) return;
+
+    fetchSchedules();
+  }, [accessToken]);
 
   const handleCreateSchedule = async (e: React.FormEvent) => {
     e.preventDefault();

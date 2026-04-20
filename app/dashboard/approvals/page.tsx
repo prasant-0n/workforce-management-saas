@@ -28,10 +28,6 @@ export default function ApprovalsPage() {
   const [rejectingId, setRejectingId] = useState<number | null>(null);
   const [rejectionReason, setRejectionReason] = useState('');
 
-  useEffect(() => {
-    fetchPendingRequests();
-  }, []);
-
   const fetchPendingRequests = async () => {
     try {
       setIsLoading(true);
@@ -50,6 +46,12 @@ export default function ApprovalsPage() {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!accessToken) return;
+
+    fetchPendingRequests();
+  }, [accessToken]);
 
   const handleApprove = async (leaveRequestId: number) => {
     try {

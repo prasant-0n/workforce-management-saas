@@ -48,10 +48,6 @@ export default function LeavePage() {
     reason: '',
   });
 
-  useEffect(() => {
-    fetchLeaveData();
-  }, []);
-
   const fetchLeaveData = async () => {
     try {
       setIsLoading(true);
@@ -64,21 +60,34 @@ export default function LeavePage() {
         }),
       ]);
 
-      if (requestsRes.ok) {
-        const requestsData = await requestsRes.json();
-        setRequests(requestsData);
+      if (!requestsRes.ok) {
+        const errorData = await requestsRes.json().catch(() => null);
+        throw new Error(errorData?.error || 'Failed to load leave requests');
       }
 
-      if (typesRes.ok) {
-        const typesData = await typesRes.json();
-        setLeaveTypes(typesData);
+      if (!typesRes.ok) {
+        const errorData = await typesRes.json().catch(() => null);
+        throw new Error(errorData?.error || 'Failed to load leave types');
       }
+
+      const requestsData = await requestsRes.json();
+      const typesData = await typesRes.json();
+
+      setRequests(requestsData);
+      setLeaveTypes(typesData);
+      setError('');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load data');
     } finally {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!accessToken) return;
+
+    fetchLeaveData();
+  }, [accessToken]);
 
   const handleCreateRequest = async (e: React.FormEvent) => {
     e.preventDefault();

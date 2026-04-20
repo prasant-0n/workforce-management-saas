@@ -32,27 +32,29 @@ export default function TeamPage() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    fetchTeamMembers();
-  }, []);
+    if (!accessToken) return;
 
-  const fetchTeamMembers = async () => {
-    try {
-      setIsLoading(true);
-      const response = await fetch('/api/users', {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      });
+    async function fetchTeamMembers() {
+      try {
+        setIsLoading(true);
+        const response = await fetch('/api/users', {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
 
-      if (!response.ok) throw new Error('Failed to fetch team members');
+        if (!response.ok) throw new Error('Failed to fetch team members');
 
-      const data = await response.json();
-      setMembers(data);
-      setError('');
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load team members');
-    } finally {
-      setIsLoading(false);
+        const data = await response.json();
+        setMembers(data);
+        setError('');
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to load team members');
+      } finally {
+        setIsLoading(false);
+      }
     }
-  };
+
+    fetchTeamMembers();
+  }, [accessToken]);
 
   const columns = [
     {

@@ -33,10 +33,6 @@ export default function UsersPage() {
     department: '',
   });
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
   const fetchUsers = async () => {
     try {
       setIsLoading(true);
@@ -55,6 +51,12 @@ export default function UsersPage() {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!accessToken) return;
+
+    fetchUsers();
+  }, [accessToken]);
 
   const handleCreateUser = async (e: React.FormEvent) => {
     e.preventDefault();
