@@ -1,12 +1,27 @@
 # WorkForce - Enterprise Workforce Management Platform
 
-> A production-grade, enterprise-scale workforce management system built with modern web technologies, featuring world-class UI/UX, intelligent scheduling, leave management, and real-time team oversight.
+> A **production-ready**, enterprise-scale workforce management system built with modern web technologies, featuring world-class UI/UX, intelligent scheduling, leave management, and real-time team oversight. **Now live at [workforce-management-saas.vercel.app](https://workforce-management-saas.vercel.app/)** ✨
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit_Now-00ADD8?style=for-the-badge&logo=vercel&logoColor=white)](https://workforce-management-saas.vercel.app/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/prasant-0n/workforce-management-saas/blob/main/LICENSE)
 ![Next.js](https://img.shields.io/badge/Next.js-16-black)
 ![React](https://img.shields.io/badge/React-19-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)
 ![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-4-38B2AC)
+[![Vercel Deployment](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=flat&logo=vercel&logoColor=white)](https://vercel.com)
+
+## 🚀 Live Demo
+
+**👉 [Try WorkForce Live](https://workforce-management-saas.vercel.app/)**
+
+Experience the full-featured workforce management platform with:
+- ✨ **Interactive Dashboard** - Real-time metrics and team insights
+- 📅 **Smart Scheduling** - Intelligent shift management system
+- 🗓️ **Leave Management** - Complete request and approval workflow
+- 👥 **Team Collaboration** - User management and role-based access
+- 📱 **Responsive Design** - Works seamlessly on all devices
+
+*No setup required - just click and explore!*
 
 ## Overview
 
@@ -421,6 +436,16 @@ Use Postman or similar tools with the following workflow:
 
 ## 🚢 Deployment
 
+### Production Deployment ✅
+
+**WorkForce is live and running on Vercel!**
+
+- **🌐 Live URL**: https://workforce-management-saas.vercel.app/
+- **⚡ Performance**: Optimized for production with global CDN
+- **🔒 Security**: HTTPS enabled with security headers
+- **📊 Monitoring**: Real-time deployment status and analytics
+- **🔄 CI/CD**: Automatic deployments on every git push
+
 ### Vercel (Recommended)
 1. Push to GitHub
 2. Connect repository to Vercel
@@ -501,17 +526,27 @@ To see WorkForce in action:
 
 For detailed screenshot guidelines, see [`screenshots/README.md`](./screenshots/README.md).
 
-## �📞 Contact & Feedback
+## 📞 Contact & Links
 
+### 🌐 **Live Application**
+- **Production URL**: https://workforce-management-saas.vercel.app/
+- **Demo Access**: Try the full application instantly
+- **Status**: ✅ Live and operational
+
+### 📧 **Get In Touch**
 Have questions or feedback? We'd love to hear from you!
 
-- Website: https://workforce.app
-- Email: hello@workforce.app
-- Twitter: @workforce_app
-- LinkedIn: /company/workforce-app
+- **📧 Email**: hello@workforce.app
+- **🐦 Twitter**: [@workforce_app](https://twitter.com/workforce_app)
+- **💼 LinkedIn**: [/company/workforce-app](https://linkedin.com/company/workforce-app)
+- **📖 Documentation**: [WorkForce Docs](https://docs.workforce.app)
+- **🐛 Issues**: [GitHub Issues](https://github.com/prasant-0n/workforce-management-saas/issues)
+
+### 🤝 **Contributing**
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
 ---
 
 **Made with ❤️ by the WorkForce Team**
 
-*"Simplifying workforce management, one shift at a time."*
+*"Simplifying workforce management, one shift at a time."* 🚀
