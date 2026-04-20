@@ -34,7 +34,7 @@ export async function generateRefreshToken(payload: Omit<JWTPayload, 'iat' | 'ex
 export async function verifyToken(token: string): Promise<JWTPayload> {
   try {
     const verified = await jwtVerify(token, JWT_SECRET);
-    return verified.payload as JWTPayload;
+    return verified.payload as unknown as JWTPayload;
   } catch (error) {
     throw new Error('Invalid or expired token');
   }

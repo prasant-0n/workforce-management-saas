@@ -26,24 +26,20 @@ export interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [accessToken, setAccessToken] = useState<string | null>(null);
-  const [refreshToken, setRefreshToken] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Load auth from localStorage on mount
-  useEffect(() => {
+  const [user, setUser] = useState<User | null>(() => {
+    if (typeof window === 'undefined') return null;
     const savedUser = localStorage.getItem('user');
-    const savedAccessToken = localStorage.getItem('accessToken');
-    const savedRefreshToken = localStorage.getItem('refreshToken');
-
-    if (savedUser && savedAccessToken) {
-      setUser(JSON.parse(savedUser));
-      setAccessToken(savedAccessToken);
-      setRefreshToken(savedRefreshToken);
-    }
-    setIsLoading(false);
-  }, []);
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
+  const [accessToken, setAccessToken] = useState<string | null>(() => {
+    if (typeof window === 'undefined') return null;
+    return localStorage.getItem('accessToken');
+  });
+  const [refreshToken, setRefreshToken] = useState<string | null>(() => {
+    if (typeof window === 'undefined') return null;
+    return localStorage.getItem('refreshToken');
+  });
+  const [isLoading, setIsLoading] = useState(false);
 
   const login = useCallback(async (email: string, password: string) => {
     try {
